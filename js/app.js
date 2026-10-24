@@ -32,7 +32,7 @@
   }
 
   function showFormMessage(selector, message) {
-    $(selector).textContent = message || "";
+    $(selector).textContent = typeof message === "string" ? message : "";
   }
 
   function isMccEmail(email) {
@@ -622,7 +622,7 @@
 
   // Header, dialogs and listing form.
   $("#google-signin-button").addEventListener("click", signInWithGoogle);
-  $("#account-button").addEventListener("click", openSignIn);
+  $("#account-button").addEventListener("click", () => openSignIn());
   $("#signout-button").addEventListener("click", signOut);
   $("#mobile-signout-button").addEventListener("click", signOut);
   $("#my-chats-button").addEventListener("click", openInbox);
