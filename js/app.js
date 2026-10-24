@@ -32,7 +32,8 @@
   }
 
   function showFormMessage(selector, message) {
-    $(selector).textContent = typeof message === "string" ? message : "";
+    const text = typeof message === "string" ? message : "";
+    $(selector).textContent = text === "[object PointerEvent]" || text === "[object MouseEvent]" ? "" : text;
   }
 
   function isMccEmail(email) {
@@ -154,7 +155,7 @@
   }
 
   function openSignIn(message = "") {
-    showFormMessage("#signin-message", message);
+    showFormMessage("#signin-message", typeof message === "string" ? message : "");
     if (!signinDialog.open) signinDialog.showModal();
   }
 
